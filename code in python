@@ -1,0 +1,16 @@
+import sympy as sp
+def polynomial_with_roots(N, m):
+    x = sp.Symbol("x")   # We define x as the unknown of the polynomial
+    p_x=x+1   # initializing 
+    if(m==0):   # If m=0 we know that m_coeff=1. Putting this if avoids doing useless calculations that can be time consuming on python
+        m_coeff=1
+    else:
+        for q in range (2,N+1):   # We start at 2 as p_x is already equal to x+1
+            print('q=',q)
+            p_x=p_x*(q*x +1)   # We just need to put this formula. The formula with the sum is the Standard Form of a Polynomial.
+            print('p_x=',p_x)
+        p_x=p_x.expand()   #Expands p_x into a standard form of a polynomial
+        m_coeff=p_x.coeff(x**m)   #<nameOfPolynomial>.coeff(x**<power>) returns the coefficient of the polynomial at the power x**m
+        print("p_x=",p_x)
+    return m_coeff
+polynomial_with_roots(3,2)
